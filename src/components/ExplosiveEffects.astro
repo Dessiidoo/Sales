@@ -198,7 +198,10 @@
     projectCards.forEach(card => {
       card.addEventListener('click', (e) => {
         e.preventDefault();
-        explosiveEffects.projectClickEffect(card);
+        
+        // Get project type for unique effects
+        const projectType = card.dataset.project || 'default';
+        explosiveEffects.projectClickEffect(card, projectType);
         
         // Still navigate after effect
         const link = card.querySelector('a[href]');
@@ -219,9 +222,231 @@
     });
   });
   
+  // Enhanced project click effects with unique animations per project
+  ExplosiveEffects.prototype.projectClickEffect = function(element, projectType = 'default') {
+    const rect = element.getBoundingClientRect();
+    const x = rect.left + rect.width / 2;
+    const y = rect.top + rect.height / 2;
+    
+    switch(projectType) {
+      case 'guardian-eye':
+        this.guardianEyeEffect(element, x, y);
+        break;
+      case 'peacekeeper':
+        this.peacekeeperEffect(element, x, y);
+        break;
+      case 'defense':
+        this.defenseEffect(element, x, y);
+        break;
+      case 'leadpro':
+        this.leadproEffect(element, x, y);
+        break;
+      default:
+        this.defaultProjectEffect(element, x, y);
+    }
+  };
+  
+  // Guardian Eye - TOP SECRET glitch effect
+  ExplosiveEffects.prototype.guardianEyeEffect = function(element, x, y) {
+    // Screen glitch effect
+    document.body.style.filter = 'hue-rotate(180deg) contrast(150%)';
+    setTimeout(() => document.body.style.filter = '', 200);
+    
+    // Red alert flash
+    const overlay = document.getElementById('explosion-overlay');
+    if (overlay) {
+      overlay.style.background = 'linear-gradient(45deg, rgba(255,0,0,0.3), rgba(139,0,0,0.5))';
+      overlay.classList.remove('hidden');
+      setTimeout(() => overlay.classList.add('hidden'), 500);
+    }
+    
+    // Scanning line effect
+    this.createScanningLines();
+    
+    // No fireworks - just ominous red particles
+    this.createRedParticles(x, y);
+    
+    // Alert sound simulation (visual)
+    this.showAlert('🔒 CLASSIFIED ACCESS DETECTED');
+  };
+  
+  // Peacekeeper - Peaceful blue/white explosion
+  ExplosiveEffects.prototype.peacekeeperEffect = function(element, x, y) {
+    element.classList.add('boom-effect');
+    setTimeout(() => element.classList.remove('boom-effect'), 300);
+    
+    // Peaceful blue/white fireworks
+    this.createPeacefulFirework(x, y);
+    this.createSparkles(element, ['#4ecdc4', '#45b7d1', '#ffffff', '#96ceb4']);
+  };
+  
+  // Defense - Military-style explosion
+  ExplosiveEffects.prototype.defenseEffect = function(element, x, y) {
+    // Intense shake
+    document.body.classList.add('shake-effect');
+    setTimeout(() => document.body.classList.remove('shake-effect'), 800);
+    
+    // Military colors - green/orange
+    this.createMilitaryFirework(x, y);
+    this.createSparkles(element, ['#ff6b35', '#f7931e', '#228b22', '#32cd32']);
+  };
+  
+  // LeadPro - Business-style effect
+  ExplosiveEffects.prototype.leadproEffect = function(element, x, y) {
+    // Professional pulse
+    element.style.boxShadow = '0 0 30px rgba(147, 51, 234, 0.6)';
+    setTimeout(() => element.style.boxShadow = '', 1000);
+    
+    // Purple/pink business colors
+    this.createBusinessFirework(x, y);
+    this.createSparkles(element, ['#9333ea', '#ec4899', '#8b5cf6', '#f472b6']);
+  };
+  
+  // Default project effect
+  ExplosiveEffects.prototype.defaultProjectEffect = function(element, x, y) {
+    element.classList.add('boom-effect');
+    setTimeout(() => element.classList.remove('boom-effect'), 300);
+    this.startFireworks(x, y);
+    this.createSparkles(element);
+  };
+  
+  // Helper methods for unique effects
+  ExplosiveEffects.prototype.createScanningLines = function() {
+    for (let i = 0; i < 3; i++) {
+      const line = document.createElement('div');
+      line.style.cssText = `
+        position: fixed;
+        top: ${Math.random() * window.innerHeight}px;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background: linear-gradient(90deg, transparent, #ff0000, transparent);
+        z-index: 9999;
+        animation: scan-line 1s ease-out forwards;
+      `;
+      document.body.appendChild(line);
+      setTimeout(() => line.remove(), 1000);
+    }
+  };
+  
+  ExplosiveEffects.prototype.createRedParticles = function(x, y) {
+    const colors = ['#ff0000', '#8b0000', '#dc143c', '#b22222'];
+    for (let i = 0; i < 20; i++) {
+      this.particles.push({
+        x: x,
+        y: y,
+        vx: (Math.random() - 0.5) * 8,
+        vy: (Math.random() - 0.5) * 8,
+        color: colors[Math.floor(Math.random() * colors.length)],
+        life: 1,
+        decay: Math.random() * 0.02 + 0.01
+      });
+    }
+    this.updateParticles();
+  };
+  
+  ExplosiveEffects.prototype.createPeacefulFirework = function(x, y) {
+    const colors = ['#4ecdc4', '#45b7d1', '#ffffff', '#96ceb4', '#a8e6cf'];
+    for (let i = 0; i < 25; i++) {
+      this.particles.push({
+        x: x,
+        y: y,
+        vx: (Math.random() - 0.5) * 6,
+        vy: (Math.random() - 0.5) * 6,
+        color: colors[Math.floor(Math.random() * colors.length)],
+        life: 1,
+        decay: Math.random() * 0.015 + 0.008
+      });
+    }
+    this.updateParticles();
+  };
+  
+  ExplosiveEffects.prototype.createMilitaryFirework = function(x, y) {
+    const colors = ['#ff6b35', '#f7931e', '#228b22', '#32cd32', '#ffd700'];
+    for (let i = 0; i < 35; i++) {
+      this.particles.push({
+        x: x,
+        y: y,
+        vx: (Math.random() - 0.5) * 12,
+        vy: (Math.random() - 0.5) * 12,
+        color: colors[Math.floor(Math.random() * colors.length)],
+        life: 1,
+        decay: Math.random() * 0.025 + 0.015
+      });
+    }
+    this.updateParticles();
+  };
+  
+  ExplosiveEffects.prototype.createBusinessFirework = function(x, y) {
+    const colors = ['#9333ea', '#ec4899', '#8b5cf6', '#f472b6', '#c084fc'];
+    for (let i = 0; i < 30; i++) {
+      this.particles.push({
+        x: x,
+        y: y,
+        vx: (Math.random() - 0.5) * 8,
+        vy: (Math.random() - 0.5) * 8,
+        color: colors[Math.floor(Math.random() * colors.length)],
+        life: 1,
+        decay: Math.random() * 0.02 + 0.01
+      });
+    }
+    this.updateParticles();
+  };
+  
+  ExplosiveEffects.prototype.showAlert = function(message) {
+    const alert = document.createElement('div');
+    alert.style.cssText = `
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: rgba(139, 0, 0, 0.9);
+      color: #ff0000;
+      padding: 20px 40px;
+      border: 2px solid #ff0000;
+      border-radius: 10px;
+      font-family: monospace;
+      font-size: 18px;
+      font-weight: bold;
+      z-index: 10000;
+      animation: alert-flash 0.5s ease-in-out;
+    `;
+    alert.textContent = message;
+    document.body.appendChild(alert);
+    setTimeout(() => alert.remove(), 2000);
+  };
+  
+  ExplosiveEffects.prototype.createSparkles = function(element, customColors = null) {
+    const sparkleCount = 15;
+    const rect = element.getBoundingClientRect();
+    const colors = customColors || [`hsl(${Math.random() * 360}, 70%, 60%)`];
+    
+    for (let i = 0; i < sparkleCount; i++) {
+      const sparkle = document.createElement('div');
+      sparkle.className = 'particle';
+      sparkle.style.background = colors[Math.floor(Math.random() * colors.length)];
+      sparkle.style.left = `${rect.left + Math.random() * rect.width}px`;
+      sparkle.style.top = `${rect.top + Math.random() * rect.height}px`;
+      sparkle.style.animation = `sparkle-float 1s ease-out forwards`;
+      
+      document.body.appendChild(sparkle);
+      setTimeout(() => sparkle.remove(), 1000);
+    }
+  };
   // Add sparkle animation CSS
   const style = document.createElement('style');
   style.textContent = `
+    @keyframes scan-line {
+      0% { transform: translateX(-100%); opacity: 0; }
+      50% { opacity: 1; }
+      100% { transform: translateX(100%); opacity: 0; }
+    }
+    
+    @keyframes alert-flash {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.5; }
+    }
+    
     @keyframes sparkle-float {
       0% {
         transform: translateY(0) scale(1);
