@@ -1,0 +1,121 @@
+---
+import { Heart, Zap, Coffee, Rocket, Star } from 'lucide-react';
+---
+
+<section id="support" class="py-20 bg-gradient-to-b from-gray-900 to-black relative overflow-hidden">
+  <!-- Background Effects -->
+  <div class="absolute inset-0">
+    <div class="absolute top-1/4 left-1/4 w-64 h-64 bg-purple-500/10 rounded-full blur-3xl animate-pulse"></div>
+    <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-pink-500/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
+  </div>
+
+  <div class="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-16">
+      <div class="inline-flex items-center space-x-2 bg-purple-500/10 border border-purple-500/20 rounded-full px-4 py-2 mb-6">
+        <Heart className="w-4 h-4 text-pink-400" />
+        <span class="text-purple-300 text-sm">Support Innovation</span>
+      </div>
+      
+      <h2 class="text-4xl md:text-5xl font-bold mb-6">
+        <span class="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
+          Fuel the Future
+        </span>
+      </h2>
+      
+      <p class="text-xl text-gray-300 max-w-3xl mx-auto mb-8">
+        Your support helps me continue building revolutionary AI solutions that transform industries 
+        and create positive impact. Every contribution fuels innovation and brings us closer to a better future.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+      <!-- Coffee Tier -->
+      <div class="group relative bg-gradient-to-br from-gray-900 to-black border border-purple-500/20 rounded-2xl p-8 hover:border-purple-500/40 transition-all duration-300 hover:transform hover:scale-105">
+        <div class="absolute inset-0 bg-gradient-to-br from-yellow-500/5 to-orange-500/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+        <div class="relative z-10 text-center">
+          <div class="w-16 h-16 bg-gradient-to-r from-yellow-500 to-orange-500 rounded-full flex items-center justify-center mx-auto mb-6">
+            <Coffee className="w-8 h-8 text-white" />
+          </div>
+          <h3 class="text-2xl font-bold text-white mb-2">Buy Me Coffee</h3>
+          <p class="text-gray-300 mb-6">Fuel late-night coding sessions and breakthrough moments</p>
+          <div class="text-3xl font-bold text-yellow-400 mb-6">$5</div>
+          <button class="w-full bg-gradient-to-r from-yellow-500 to-orange-500 text-white py-3 rounded-lg font-semibold hover:from-yellow-600 hover:to-orange-600 transition-all duration-200">
+            Support with Coffee
+          </button>
+        </div>
+      </div>
+
+      <!-- Rocket Tier -->
+      <div class="group relative bg-gradient-to-br from-gray-900 to-black border border-purple-500/40 rounded-2xl p-8 hover:border-purple-500/60 transition-all duration-300 hover:transform hover:scale-105 ring-2 ring-purple-500/20">
+        <div class="absolute inset-0 bg-gradient-to-br from-purple-500/10 to-pink-500/10 rounded-2xl opacity-100 transition-opacity duration-300"></div>
+        <div class="absolute -top-4 left-1/2 transform -translate-x-1/2">
+          <span class="bg-gradient-to-r from-purple-500 to-pink-500 text-white px-4 py-1 rounded-full text-sm font-semibold">
+            Most Popular
+          </span>
+        </div>
+        <div class="relative z-10 text-center">
+          <div class="w-16 h-16 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center mx-auto mb-6">
+            <Rocket className="w-8 h-8 text-white" />
+          </div>
+          <h3 class="text-2xl font-bold text-white mb-2">Rocket Boost</h3>
+          <p class="text-gray-300 mb-6">Accelerate development of game-changing AI projects</p>
+          <div class="text-3xl font-bold text-purple-400 mb-6">$25</div>
+          <button class="w-full bg-gradient-to-r from-purple-500 to-pink-500 text-white py-3 rounded-lg font-semibold hover:from-purple-600 hover:to-pink-600 transition-all duration-200">
+            Boost Innovation
+          </button>
+        </div>
+      </div>
+
+      <!-- Star Tier -->
+      <div class="group relative bg-gradient-to-br from-gray-900 to-black border border-purple-500/20 rounded-2xl p-8 hover:border-purple-500/40 transition-all duration-300 hover:transform hover:scale-105">
+        <div class="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-purple-500/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+        <div class="relative z-10 text-center">
+          <div class="w-16 h-16 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-center mx-auto mb-6">
+            <Star className="w-8 h-8 text-white" />
+          </div>
+          <h3 class="text-2xl font-bold text-white mb-2">Superstar</h3>
+          <p class="text-gray-300 mb-6">Fund major breakthroughs and revolutionary solutions</p>
+          <div class="text-3xl font-bold text-blue-400 mb-6">$100</div>
+          <button class="w-full bg-gradient-to-r from-blue-500 to-purple-500 text-white py-3 rounded-lg font-semibold hover:from-blue-600 hover:to-purple-600 transition-all duration-200">
+            Supercharge Progress
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Custom Amount -->
+    <div class="max-w-md mx-auto">
+      <div class="bg-gradient-to-br from-gray-900 to-black border border-purple-500/20 rounded-2xl p-6">
+        <h3 class="text-xl font-bold text-white text-center mb-4">Custom Support</h3>
+        <div class="flex space-x-3">
+          <input 
+            type="number" 
+            placeholder="Enter amount" 
+            class="flex-1 bg-gray-800 border border-gray-700 rounded-lg px-4 py-3 text-white placeholder-gray-400 focus:border-purple-500 focus:outline-none"
+          />
+          <button class="bg-gradient-to-r from-purple-500 to-pink-500 text-white px-6 py-3 rounded-lg font-semibold hover:from-purple-600 hover:to-pink-600 transition-all duration-200">
+            Donate
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Impact Statement -->
+    <div class="text-center mt-16">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+        <div class="text-center">
+          <div class="text-3xl font-bold text-purple-400 mb-2">50+</div>
+          <p class="text-gray-300">AI Projects Launched</p>
+        </div>
+        <div class="text-center">
+          <div class="text-3xl font-bold text-pink-400 mb-2">$2M+</div>
+          <p class="text-gray-300">Revenue Generated</p>
+        </div>
+        <div class="text-center">
+          <div class="text-3xl font-bold text-blue-400 mb-2">100K+</div>
+          <p class="text-gray-300">Lives Impacted</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

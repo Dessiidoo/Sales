@@ -1,0 +1,73 @@
+---
+import { Heart, Github, Linkedin, Twitter, Mail, Zap } from 'lucide-react';
+---
+
+<footer class="bg-black border-t border-purple-500/20">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+      <!-- Brand -->
+      <div class="col-span-1 md:col-span-2">
+        <div class="flex items-center space-x-3 mb-4">
+          <div class="w-10 h-10 bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg flex items-center justify-center">
+            <Zap className="w-6 h-6 text-white" />
+          </div>
+          <div>
+            <h3 class="text-xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
+              AI Visionary
+            </h3>
+            <p class="text-sm text-gray-400">Founder • Developer • Innovator</p>
+          </div>
+        </div>
+        <p class="text-gray-300 mb-6 max-w-md">
+          Building the future with AI-powered solutions that transform industries and empower communities. 
+          Every line of code is a step toward a better tomorrow.
+        </p>
+        <div class="flex space-x-4">
+          <a href="#" class="text-gray-400 hover:text-purple-400 transition-colors duration-200">
+            <Github className="w-6 h-6" />
+          </a>
+          <a href="#" class="text-gray-400 hover:text-purple-400 transition-colors duration-200">
+            <Linkedin className="w-6 h-6" />
+          </a>
+          <a href="#" class="text-gray-400 hover:text-purple-400 transition-colors duration-200">
+            <Twitter className="w-6 h-6" />
+          </a>
+          <a href="#" class="text-gray-400 hover:text-purple-400 transition-colors duration-200">
+            <Mail className="w-6 h-6" />
+          </a>
+        </div>
+      </div>
+
+      <!-- Quick Links -->
+      <div>
+        <h4 class="text-white font-semibold mb-4">Quick Links</h4>
+        <ul class="space-y-2">
+          <li><a href="#projects" class="text-gray-400 hover:text-purple-400 transition-colors">Projects</a></li>
+          <li><a href="#about" class="text-gray-400 hover:text-purple-400 transition-colors">About</a></li>
+          <li><a href="#support" class="text-gray-400 hover:text-purple-400 transition-colors">Support</a></li>
+          <li><a href="#contact" class="text-gray-400 hover:text-purple-400 transition-colors">Contact</a></li>
+        </ul>
+      </div>
+
+      <!-- Technologies -->
+      <div>
+        <h4 class="text-white font-semibold mb-4">Technologies</h4>
+        <ul class="space-y-2">
+          <li><span class="text-gray-400">Artificial Intelligence</span></li>
+          <li><span class="text-gray-400">Machine Learning</span></li>
+          <li><span class="text-gray-400">Blockchain</span></li>
+          <li><span class="text-gray-400">Full-Stack Development</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="border-t border-purple-500/20 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+      <p class="text-gray-400 text-sm">
+        © 2025 AI Visionary. Built with <Heart className="w-4 h-4 text-pink-400 inline mx-1" /> and cutting-edge technology.
+      </p>
+      <p class="text-gray-400 text-sm mt-4 md:mt-0">
+        Powered by AI • Designed for the Future
+      </p>
+    </div>
+  </div>
+</footer>
