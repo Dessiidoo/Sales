@@ -1,5 +1,38 @@
 # Astro Starter Kit: Basics
 
+## 🤖 AI-Powered Domain Analysis Setup
+
+This project includes AI-powered domain analysis using OpenAI. To enable this feature:
+
+1. **Get OpenAI API Key**:
+   - Visit [OpenAI Platform](https://platform.openai.com/api-keys)
+   - Create a new API key
+   - Copy the key (starts with `sk-`)
+
+2. **Configure Environment Variables**:
+   - Open the `.env` file in the project root
+   - Replace `your_openai_api_key_here` with your actual API key:
+     ```
+     PUBLIC_OPENAI_API_KEY=sk-your-actual-key-here
+     ```
+
+3. **Restart Development Server**:
+   ```sh
+   npm run dev
+   ```
+
+**Note**: Without the API key, the domain scanner will use simulated analysis data, which still provides a great demo experience!
+
+## 💰 Donation Integration
+
+The project includes multiple donation/funding options:
+- Buy Me Coffee
+- GitHub Sponsors  
+- Gumroad
+- Bitcoin donations
+
+All donation links are pre-configured and ready to use!
+
 ```sh
 npm create astro@latest -- --template basics
 ```

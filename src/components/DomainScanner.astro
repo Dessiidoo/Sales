@@ -54,8 +54,9 @@ import { Search, Sparkles, DollarSign, TrendingUp } from 'lucide-react';
       <div id="loading" class="hidden text-center py-12">
         <div class="inline-flex items-center space-x-3">
           <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-primary-600"></div>
-          <span class="text-lg text-gray-600">AI is analyzing domains...</span>
+          <span class="text-lg text-gray-600" id="loading-text">AI is analyzing domains...</span>
         </div>
+        <div class="mt-4 text-sm text-gray-500" id="loading-details"></div>
       </div>
 
       <!-- Results -->
@@ -72,6 +73,8 @@ import { Search, Sparkles, DollarSign, TrendingUp } from 'lucide-react';
   const results = document.getElementById('results');
   const searchInput = document.getElementById('domain-search');
   const maxPriceInput = document.getElementById('max-price');
+  const loadingText = document.getElementById('loading-text');
+  const loadingDetails = document.getElementById('loading-details');
 
   scanBtn?.addEventListener('click', async () => {
     const keywords = searchInput.value.trim();
@@ -87,13 +90,37 @@ import { Search, Sparkles, DollarSign, TrendingUp } from 'lucide-react';
     results!.innerHTML = '';
     scanBtn!.disabled = true;
     scanBtn!.innerHTML = '<div class="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-2"></div>Scanning...';
+    
+    // Update loading messages
+    const messages = [
+      'Scanning available domains...',
+      'Analyzing market trends...',
+      'Calculating profit potential...',
+      'Applying AI insights...',
+      'Finalizing recommendations...'
+    ];
+    
+    let messageIndex = 0;
+    const messageInterval = setInterval(() => {
+      if (loadingText && messageIndex < messages.length) {
+        loadingText.textContent = messages[messageIndex];
+        messageIndex++;
+      }
+    }, 1500);
 
     try {
       const domains = await domainAnalyzer.scanDomains(keywords, maxPrice);
+      clearInterval(messageInterval);
       displayResults(domains);
     } catch (error) {
+      clearInterval(messageInterval);
       console.error('Error scanning domains:', error);
-      results!.innerHTML = '<div class="text-center py-8 text-red-600">Error scanning domains. Please try again.</div>';
+      results!.innerHTML = `
+        <div class="text-center py-8">
+          <div class="text-red-600 mb-2">⚠️ Error scanning domains</div>
+          <div class="text-sm text-gray-500">${error.message || 'Please try again'}</div>
+        </div>
+      `;
     } finally {
       loading?.classList.add('hidden');
       scanBtn!.disabled = false;
@@ -103,7 +130,12 @@ import { Search, Sparkles, DollarSign, TrendingUp } from 'lucide-react';
 
   function displayResults(domains: any[]) {
     if (domains.length === 0) {
-      results!.innerHTML = '<div class="text-center py-8 text-gray-600">No domains found matching your criteria.</div>';
+      results!.innerHTML = `
+        <div class="text-center py-8">
+          <div class="text-gray-600 mb-2">🔍 No domains found matching your criteria</div>
+          <div class="text-sm text-gray-500">Try different keywords or increase your max price</div>
+        </div>
+      `;
       return;
     }
 
@@ -143,7 +175,7 @@ import { Search, Sparkles, DollarSign, TrendingUp } from 'lucide-react';
               <span>🎯 Confidence: ${domain.confidence}%</span>
               <span>📈 Trend Score: ${domain.trendScore}/10</span>
               <span>🔍 SEO Value: ${domain.seoValue}/10</span>
-              ${domain.aiPowered ? '<span class="text-primary-600">🤖 AI Powered</span>' : '<span class="text-gray-500">📊 Simulated</span>'}
+              ${domain.aiPowered ? '<span class="text-primary-600 font-medium">🤖 AI Powered</span>' : '<span class="text-orange-600 font-medium">📊 Simulated Analysis</span>'}
             </div>
             
             ${domain.riskFactors ? `
@@ -162,7 +194,7 @@ import { Search, Sparkles, DollarSign, TrendingUp } from 'lucide-react';
 
           <div class="mt-4 lg:mt-0 lg:ml-6">
             <button class="btn-primary w-full lg:w-auto">
-              Buy Domain
+              🚀 Invest Now
             </button>
           </div>
         </div>
@@ -170,6 +202,36 @@ import { Search, Sparkles, DollarSign, TrendingUp } from 'lucide-react';
     `).join('');
 
     results!.innerHTML = html;
+    
+    // Add a summary at the top
+    const aiPoweredCount = domains.filter(d => d.aiPoweredCount).length;
+    const totalProfit = domains.reduce((sum, d) => sum + (d.predictedValue - d.currentPrice), 0);
+    
+    const summary = document.createElement('div');
+    summary.className = 'card mb-6 bg-gradient-to-r from-primary-50 to-purple-50 border-primary-200';
+    summary.innerHTML = `
+      <div class="text-center">
+        <h3 class="text-lg font-semibold text-gray-900 mb-2">📊 Analysis Summary</h3>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
+          <div>
+            <span class="text-gray-600">Domains Found:</span>
+            <span class="font-semibold text-primary-600 ml-1">${domains.length}</span>
+          </div>
+          <div>
+            <span class="text-gray-600">Total Profit Potential:</span>
+            <span class="font-semibold text-success-600 ml-1">$${totalProfit.toLocaleString()}</span>
+          </div>
+          <div>
+            <span class="text-gray-600">AI Analysis:</span>
+            <span class="font-semibold ${aiPoweredCount > 0 ? 'text-primary-600' : 'text-orange-600'} ml-1">
+              ${aiPoweredCount > 0 ? `${aiPoweredCount} AI-powered` : 'Simulated mode'}
+            </span>
+          </div>
+        </div>
+      </div>
+    `;
+    
+    results!.insertBefore(summary, results!.firstChild);
   }
 
   function getProfitBadgeClass(score: number): string {

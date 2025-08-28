@@ -1,17 +1,28 @@
 // OpenAI service for AI-powered domain analysis
 class OpenAIService {
   constructor() {
+    // In production, make sure to set this environment variable
     this.apiKey = import.meta.env.PUBLIC_OPENAI_API_KEY;
     this.baseURL = 'https://api.openai.com/v1';
+    
+    // Check if API key is configured
+    if (!this.apiKey || this.apiKey === 'your_openai_api_key_here') {
+      console.warn('⚠️ OpenAI API key not configured. Domain analysis will use fallback mode.');
+      console.log('💡 To enable AI analysis:');
+      console.log('   1. Get your API key from https://platform.openai.com/api-keys');
+      console.log('   2. Add it to your .env file as PUBLIC_OPENAI_API_KEY=your_key');
+      console.log('   3. Restart your development server');
+    }
   }
 
   async analyzeDomain(domainName, keyword, marketData = {}) {
-    if (!this.apiKey) {
-      console.warn('OpenAI API key not configured, using fallback analysis');
+    if (!this.apiKey || this.apiKey === 'your_openai_api_key_here') {
+      console.log(`🤖 Using fallback analysis for ${domainName} (OpenAI not configured)`);
       return this.fallbackAnalysis(domainName, keyword);
     }
 
     try {
+      console.log(`🚀 Analyzing ${domainName} with OpenAI...`);
       const prompt = this.buildAnalysisPrompt(domainName, keyword, marketData);
       
       const response = await fetch(`${this.baseURL}/chat/completions`, {
@@ -25,7 +36,7 @@ class OpenAIService {
           messages: [
             {
               role: 'system',
-              content: 'You are an expert domain investor and AI analyst specializing in domain valuation and market trends. Provide accurate, data-driven domain analysis.'
+              content: 'You are an expert domain investor and AI analyst specializing in domain valuation and market trends. Provide accurate, data-driven domain analysis with realistic valuations based on current market conditions.'
             },
             {
               role: 'user',
@@ -42,10 +53,12 @@ class OpenAIService {
       }
 
       const data = await response.json();
+      console.log(`✅ AI analysis complete for ${domainName}`);
       return this.parseAIResponse(data.choices[0].message.content, domainName);
       
     } catch (error) {
-      console.error('OpenAI analysis failed:', error);
+      console.error(`❌ OpenAI analysis failed for ${domainName}:`, error.message);
+      console.log('🔄 Falling back to simulated analysis...');
       return this.fallbackAnalysis(domainName, keyword);
     }
   }
@@ -114,8 +127,12 @@ Be realistic but identify genuine opportunities.
 
   fallbackAnalysis(domainName, keyword) {
     // Fallback analysis when OpenAI is not available
-    const baseValue = Math.floor(Math.random() * 2000) + 500;
-    const confidence = Math.floor(Math.random() * 30) + 60;
+    console.log(`📊 Generating fallback analysis for ${domainName}`);
+    
+    // More realistic fallback values
+    const keywordMultiplier = this.getKeywordMultiplier(keyword);
+    const baseValue = Math.floor(Math.random() * 1500 * keywordMultiplier) + 100;
+    const confidence = Math.floor(Math.random() * 25) + 65; // 65-90%
     
     return {
       name: domainName,
@@ -123,21 +140,44 @@ Be realistic but identify genuine opportunities.
       confidence: confidence,
       trendScore: Math.floor(Math.random() * 4) + 5,
       seoValue: Math.floor(Math.random() * 4) + 5,
-      reasons: ['Keyword relevance', 'Domain structure', 'Market potential'],
-      riskFactors: ['Market uncertainty'],
+      reasons: [
+        'Keyword relevance', 
+        'Domain structure', 
+        'Market potential',
+        'Simulated analysis'
+      ],
+      riskFactors: ['Market uncertainty', 'Simulated data'],
       timeToSell: '3-6 months',
       marketTrend: 'neutral',
       aiPowered: false
     };
   }
+  
+  getKeywordMultiplier(keyword) {
+    const highValueKeywords = {
+      'ai': 3.5,
+      'crypto': 3.0,
+      'nft': 2.5,
+      'web3': 2.8,
+      'blockchain': 3.2,
+      'metaverse': 2.2,
+      'defi': 2.7,
+      'fintech': 3.0
+    };
+    
+    return highValueKeywords[keyword.toLowerCase()] || 1.0;
+  }
 
   async batchAnalyzeDomains(domains, keyword) {
+    console.log(`🔍 Starting batch analysis of ${domains.length} domains...`);
     const analyses = [];
     
     // Process in batches to avoid rate limits
-    const batchSize = 3;
+    const batchSize = this.apiKey && this.apiKey !== 'your_openai_api_key_here' ? 3 : 5;
     for (let i = 0; i < domains.length; i += batchSize) {
       const batch = domains.slice(i, i + batchSize);
+      console.log(`📦 Processing batch ${Math.floor(i/batchSize) + 1}/${Math.ceil(domains.length/batchSize)}`);
+      
       const batchPromises = batch.map(domain => 
         this.analyzeDomain(domain, keyword)
       );
@@ -147,10 +187,12 @@ Be realistic but identify genuine opportunities.
       
       // Small delay between batches
       if (i + batchSize < domains.length) {
-        await new Promise(resolve => setTimeout(resolve, 1000));
+        const delay = this.apiKey && this.apiKey !== 'your_openai_api_key_here' ? 1000 : 200;
+        await new Promise(resolve => setTimeout(resolve, delay));
       }
     }
     
+    console.log(`✅ Batch analysis complete! Analyzed ${analyses.length} domains.`);
     return analyses;
   }
 }
