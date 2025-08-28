@@ -1,0 +1,139 @@
+---
+import { Code, Globe, Users, Lightbulb, Target, Award } from 'lucide-react';
+---
+
+<section id="about" class="py-20 bg-gradient-to-b from-gray-900 to-black">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-16">
+      <h2 class="text-4xl md:text-5xl font-bold mb-6">
+        <span class="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
+          About Me
+        </span>
+      </h2>
+      <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+        Passionate AI developer and visionary founder dedicated to creating technology that protects and empowers people worldwide
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
+      <!-- Personal Story -->
+      <div class="space-y-6">
+        <div class="bg-gradient-to-br from-gray-900/50 to-black/50 border border-purple-500/20 rounded-2xl p-8">
+          <h3 class="text-2xl font-bold text-white mb-4 flex items-center">
+            <Lightbulb className="w-6 h-6 text-yellow-400 mr-3" />
+            My Story
+          </h3>
+          <div class="space-y-4 text-gray-300">
+            <p>
+              I'm Loretta Chapman, an AI visionary and founder with a deep passion for using technology to save lives and protect people. 
+              My journey began with a simple belief: artificial intelligence should serve humanity's greatest needs.
+            </p>
+            <p>
+              What started as curiosity about AI's potential has evolved into a mission-driven career focused on developing 
+              life-saving technologies. From emergency rescue systems to global safety platforms, I build AI solutions 
+              that make a real difference in crisis situations.
+            </p>
+            <p>
+              Every project I create is guided by one question: "How can this technology protect and empower people?" 
+              This philosophy drives everything from my humanitarian AI platforms to innovative business solutions.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Skills & Expertise -->
+      <div class="space-y-6">
+        <div class="bg-gradient-to-br from-gray-900/50 to-black/50 border border-purple-500/20 rounded-2xl p-8">
+          <h3 class="text-2xl font-bold text-white mb-6 flex items-center">
+            <Code className="w-6 h-6 text-blue-400 mr-3" />
+            Expertise
+          </h3>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div class="space-y-3">
+              <div class="flex items-center space-x-2">
+                <div class="w-2 h-2 bg-purple-400 rounded-full"></div>
+                <span class="text-gray-300">AI/Machine Learning</span>
+              </div>
+              <div class="flex items-center space-x-2">
+                <div class="w-2 h-2 bg-pink-400 rounded-full"></div>
+                <span class="text-gray-300">Emergency Response Systems</span>
+              </div>
+              <div class="flex items-center space-x-2">
+                <div class="w-2 h-2 bg-blue-400 rounded-full"></div>
+                <span class="text-gray-300">Global Safety Platforms</span>
+              </div>
+              <div class="flex items-center space-x-2">
+                <div class="w-2 h-2 bg-green-400 rounded-full"></div>
+                <span class="text-gray-300">Humanitarian Technology</span>
+              </div>
+            </div>
+            <div class="space-y-3">
+              <div class="flex items-center space-x-2">
+                <div class="w-2 h-2 bg-yellow-400 rounded-full"></div>
+                <span class="text-gray-300">Full-Stack Development</span>
+              </div>
+              <div class="flex items-center space-x-2">
+                <div class="w-2 h-2 bg-red-400 rounded-full"></div>
+                <span class="text-gray-300">Business Innovation</span>
+              </div>
+              <div class="flex items-center space-x-2">
+                <div class="w-2 h-2 bg-indigo-400 rounded-full"></div>
+                <span class="text-gray-300">Product Strategy</span>
+              </div>
+              <div class="flex items-center space-x-2">
+                <div class="w-2 h-2 bg-orange-400 rounded-full"></div>
+                <span class="text-gray-300">Crisis Management Tech</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Values & Approach -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+      <div class="text-center">
+        <div class="w-16 h-16 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center mx-auto mb-4">
+          <Target className="w-8 h-8 text-white" />
+        </div>
+        <h3 class="text-xl font-bold text-white mb-2">Purpose-Driven</h3>
+        <p class="text-gray-300">Every technology I build serves a greater purpose - protecting lives and empowering communities</p>
+      </div>
+
+      <div class="text-center">
+        <div class="w-16 h-16 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-center mx-auto mb-4">
+          <Globe className="w-8 h-8 text-white" />
+        </div>
+        <h3 class="text-xl font-bold text-white mb-2">Global Impact</h3>
+        <p class="text-gray-300">Thinking beyond borders to create solutions that can help people anywhere in the world</p>
+      </div>
+
+      <div class="text-center">
+        <div class="w-16 h-16 bg-gradient-to-r from-green-500 to-blue-500 rounded-full flex items-center justify-center mx-auto mb-4">
+          <Users className="w-8 h-8 text-white" />
+        </div>
+        <h3 class="text-xl font-bold text-white mb-2">Human-Centered</h3>
+        <p class="text-gray-300">Technology should serve people, not the other way around - every solution puts humans first</p>
+      </div>
+    </div>
+
+    <!-- Current Focus -->
+    <div class="text-center">
+      <div class="bg-gradient-to-br from-gray-900/50 to-black/50 border border-purple-500/20 rounded-2xl p-8 max-w-4xl mx-auto">
+        <h3 class="text-2xl font-bold text-white mb-4 flex items-center justify-center">
+          <Award className="w-6 h-6 text-gold-400 mr-3" />
+          Current Focus
+        </h3>
+        <p class="text-lg text-gray-300 leading-relaxed">
+          I'm currently developing advanced AI systems for emergency response and global safety coordination. 
+          My flagship project, <strong class="text-purple-400">Peacekeeper</strong>, is an open-source platform that helps communities 
+          detect risks, improve crisis coordination, and protect people in emergency situations. 
+          <br><br>
+          <span class="text-pink-400 italic">
+            "What happens when you fund a quirky AI visionary? 🤷‍♂️ Only one way to find out..."
+          </span>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
