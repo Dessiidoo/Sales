@@ -1,73 +1,152 @@
 ---
-import { Heart, Github, Linkedin, Twitter, Mail, Zap } from 'lucide-react';
+import { Heart, Zap, Coffee, Rocket, Star } from 'lucide-react';
 ---
 
-<footer class="bg-black border-t border-purple-500/20">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-    <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
-      <!-- Brand -->
-      <div class="col-span-1 md:col-span-2">
-        <div class="flex items-center space-x-3 mb-4">
-          <div class="w-10 h-10 bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg flex items-center justify-center">
-            <Zap className="w-6 h-6 text-white" />
+<section id="support" class="py-20 bg-gradient-to-b from-gray-900 to-black relative overflow-hidden">
+  <!-- Background Effects -->
+  <div class="absolute inset-0">
+    <div class="absolute top-1/4 left-1/4 w-64 h-64 bg-purple-500/10 rounded-full blur-3xl animate-pulse"></div>
+    <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-pink-500/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
+  </div>
+
+  <div class="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-16">
+      <div class="inline-flex items-center space-x-2 bg-purple-500/10 border border-purple-500/20 rounded-full px-4 py-2 mb-6">
+        <Heart className="w-4 h-4 text-pink-400" />
+        <span class="text-purple-300 text-sm">Support Innovation</span>
+      </div>
+      
+      <h2 class="text-4xl md:text-5xl font-bold mb-6">
+        <span class="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
+          Fund Me and Find Out 🤔
+        </span>
+      </h2>
+      
+      <p class="text-xl text-gray-300 max-w-3xl mx-auto mb-8">
+        Your support helps me continue developing life-saving AI technologies for global safety, 
+        humanitarian response, and emergency rescue systems. Every contribution fuels innovation that protects people and saves lives.
+        <br><br>
+        <span class="text-purple-300 italic">
+          What happens when you fund a quirky AI visionary? 🤷‍♂️ Only one way to find out...
+        </span>
+        <br><br>
+        <span class="text-purple-300 italic">
+          What happens when you fund a quirky AI visionary? 🤷‍♂️ Only one way to find out...
+        </span>
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+      <!-- Coffee Tier -->
+      <div class="group relative bg-gradient-to-br from-gray-900 to-black border border-purple-500/20 rounded-2xl p-8 hover:border-purple-500/40 transition-all duration-300 hover:transform hover:scale-105">
+        <div class="absolute inset-0 bg-gradient-to-br from-yellow-500/5 to-orange-500/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+        <div class="relative z-10 text-center">
+          <div class="w-16 h-16 bg-gradient-to-r from-yellow-500 to-orange-500 rounded-full flex items-center justify-center mx-auto mb-6">
+            <Coffee className="w-8 h-8 text-white" />
           </div>
-          <div>
-            <h3 class="text-xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
-              AI Visionary
-            </h3>
-            <p class="text-sm text-gray-400">Founder • Developer • Innovator</p>
+          <h3 class="text-2xl font-bold text-white mb-2">Buy Me Coffee</h3>
+          <p class="text-gray-300 mb-6">Fuel late-night coding sessions and breakthrough moments</p>
+          <div class="text-3xl font-bold text-yellow-400 mb-6">$5</div>
+          <button class="w-full bg-gradient-to-r from-yellow-500 to-orange-500 text-white py-3 rounded-lg font-semibold hover:from-yellow-600 hover:to-orange-600 transition-all duration-200">
+            <a href="https://buymeacoffee.com/lorettachapman" target="_blank" class="block w-full">
+              Caffeinate the Chaos ☕
+            </a>
+          </button>
+        </div>
+      </div>
+
+      <!-- Rocket Tier -->
+      <div class="group relative bg-gradient-to-br from-gray-900 to-black border border-purple-500/40 rounded-2xl p-8 hover:border-purple-500/60 transition-all duration-300 hover:transform hover:scale-105 ring-2 ring-purple-500/20">
+        <div class="absolute inset-0 bg-gradient-to-br from-purple-500/10 to-pink-500/10 rounded-2xl opacity-100 transition-opacity duration-300"></div>
+        <div class="absolute -top-4 left-1/2 transform -translate-x-1/2">
+          <span class="bg-gradient-to-r from-purple-500 to-pink-500 text-white px-4 py-1 rounded-full text-sm font-semibold">
+            Most Popular
+          </span>
+        </div>
+        <div class="relative z-10 text-center">
+          <div class="w-16 h-16 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center mx-auto mb-6">
+            <Rocket className="w-8 h-8 text-white" />
+          </div>
+          <h3 class="text-2xl font-bold text-white mb-2">Rocket Boost</h3>
+        <span class="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
+          Fund Me and Find Out 🤔
+        </span>
+          <button class="w-full bg-gradient-to-r from-purple-500 to-pink-500 text-white py-3 rounded-lg font-semibold hover:from-purple-600 hover:to-pink-600 transition-all duration-200">
+            <a href="https://github.com/sponsors/Dessiidoo" target="_blank" class="block w-full">
+              Fund Me and Find Out 🤔
+            </a>
+          </button>
+        </div>
+      </div>
+
+      <!-- Star Tier -->
+      <div class="group relative bg-gradient-to-br from-gray-900 to-black border border-purple-500/20 rounded-2xl p-8 hover:border-purple-500/40 transition-all duration-300 hover:transform hover:scale-105">
+        <div class="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-purple-500/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+        <div class="relative z-10 text-center">
+          <div class="w-16 h-16 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-center mx-auto mb-6">
+            <Star className="w-8 h-8 text-white" />
+          </div>
+          <h3 class="text-2xl font-bold text-white mb-2">Superstar</h3>
+          <p class="text-gray-300 mb-6">Fund major breakthroughs and revolutionary solutions</p>
+          <div class="text-3xl font-bold text-blue-400 mb-6">$100</div>
+          <button class="w-full bg-gradient-to-r from-blue-500 to-purple-500 text-white py-3 rounded-lg font-semibold hover:from-blue-600 hover:to-purple-600 transition-all duration-200">
+            <a href="https://lorettaspark5.gumroad.com/?_gl=1*bnu3mh*_ga*MTE4ODU3NjMzMC4xNzU1NzE1NTM1*_ga_6LJN6D94N6*czE3NTY0MDE0OTMkbzMkZzEkdDE3NTY0MDIxMDYkajE4JGwwJGgw" target="_blank" class="block w-full">
+              Supercharge Progress ⚡
+            <button id="copy-btc" class="text-xs bg-orange-500/20 text-orange-300 px-2 py-1 rounded hover:bg-orange-500/30 transition-colors">
+              Copy
+            </button>
+          </div>
+          <div class="bg-black rounded p-3 font-mono text-sm text-gray-300 break-all" id="btc-address">
+            bc1ql7gu8r6jam9u8zvr8tvkguey4ksgwwk2sf3lve
           </div>
         </div>
-        <p class="text-gray-300 mb-6 max-w-md">
-          Building the future with AI-powered solutions that transform industries and empower communities. 
-          Every line of code is a step toward a better tomorrow.
+        
+        <p class="text-center text-xs text-gray-400 mt-4">
+          ⚡ Lightning fast • 🔒 Secure • 🌍 Global • 🤖 AI-approved
         </p>
-        <div class="flex space-x-4">
-          <a href="#" class="text-gray-400 hover:text-purple-400 transition-colors duration-200">
-            <Github className="w-6 h-6" />
-          </a>
-          <a href="#" class="text-gray-400 hover:text-purple-400 transition-colors duration-200">
-            <Linkedin className="w-6 h-6" />
-          </a>
-          <a href="#" class="text-gray-400 hover:text-purple-400 transition-colors duration-200">
-            <Twitter className="w-6 h-6" />
-          </a>
-          <a href="#" class="text-gray-400 hover:text-purple-400 transition-colors duration-200">
-            <Mail className="w-6 h-6" />
-          </a>
+      </div>
+    </div>
+            </a>
+          </button>
         </div>
-      </div>
-
-      <!-- Quick Links -->
-      <div>
-        <h4 class="text-white font-semibold mb-4">Quick Links</h4>
-        <ul class="space-y-2">
-          <li><a href="#projects" class="text-gray-400 hover:text-purple-400 transition-colors">Projects</a></li>
-          <li><a href="#about" class="text-gray-400 hover:text-purple-400 transition-colors">About</a></li>
-          <li><a href="#support" class="text-gray-400 hover:text-purple-400 transition-colors">Support</a></li>
-          <li><a href="#contact" class="text-gray-400 hover:text-purple-400 transition-colors">Contact</a></li>
-        </ul>
-      </div>
-
-      <!-- Technologies -->
-      <div>
-        <h4 class="text-white font-semibold mb-4">Technologies</h4>
-        <ul class="space-y-2">
-          <li><span class="text-gray-400">Artificial Intelligence</span></li>
-          <li><span class="text-gray-400">Machine Learning</span></li>
-          <li><span class="text-gray-400">Blockchain</span></li>
-          <li><span class="text-gray-400">Full-Stack Development</span></li>
-        </ul>
       </div>
     </div>
 
-    <div class="border-t border-purple-500/20 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
-      <p class="text-gray-400 text-sm">
-        © 2025 AI Visionary. Built with <Heart className="w-4 h-4 text-pink-400 inline mx-1" /> and cutting-edge technology.
-      </p>
-      <p class="text-gray-400 text-sm mt-4 md:mt-0">
-        Powered by AI • Designed for the Future
-      </p>
+    <!-- Custom Amount -->
+    <div class="max-w-md mx-auto">
+      <div class="bg-gradient-to-br from-gray-900 to-black border border-purple-500/20 rounded-2xl p-6">
+        <h3 class="text-xl font-bold text-white text-center mb-4">Custom Support</h3>
+        <div class="flex space-x-3">
+          <input 
+            type="number" 
+            placeholder="Enter amount" 
+            class="flex-1 bg-gray-800 border border-gray-700 rounded-lg px-4 py-3 text-white placeholder-gray-400 focus:border-purple-500 focus:outline-none"
+          />
+          <button class="bg-gradient-to-r from-purple-500 to-pink-500 text-white px-6 py-3 rounded-lg font-semibold hover:from-purple-600 hover:to-pink-600 transition-all duration-200">
+            <a href="https://buymeacoffee.com/lorettachapman" target="_blank" class="block">
+              Fund the Mystery 🎯
+            </a>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Impact Statement -->
+    <div class="text-center mt-16">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+        <div class="text-center">
+          <div class="text-3xl font-bold text-purple-400 mb-2">8+</div>
+          <p class="text-gray-300">Major AI Projects</p>
+        </div>
+        <div class="text-center">
+          <div class="text-3xl font-bold text-pink-400 mb-2">Global</div>
+          <p class="text-gray-300">Safety Impact</p>
+        </div>
+        <div class="text-center">
+          <div class="text-3xl font-bold text-blue-400 mb-2">∞</div>
+          <p class="text-gray-300">Lives Protected</p>
+        </div>
+      </div>
     </div>
   </div>
-</footer>
+</section>
