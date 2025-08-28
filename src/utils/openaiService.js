@@ -1,17 +1,18 @@
 // OpenAI service for AI-powered domain analysis
 class OpenAIService {
   constructor() {
-    // In production, make sure to set this environment variable
-    this.apiKey = import.meta.env.PUBLIC_OPENAI_API_KEY;
+    // Check for OpenAI API key - try multiple possible variable names
+    this.apiKey = import.meta.env.PUBLIC_OPENAI_API_KEY || 
+                  import.meta.env.OPENAI_API_KEY || 
+                  import.meta.env.VITE_OPENAI_API_KEY;
     this.baseURL = 'https://api.openai.com/v1';
     
     // Check if API key is configured
-    if (!this.apiKey || this.apiKey === 'your_openai_api_key_here') {
-      console.warn('⚠️ OpenAI API key not configured. Domain analysis will use fallback mode.');
-      console.log('💡 To enable AI analysis:');
-      console.log('   1. Get your API key from https://platform.openai.com/api-keys');
-      console.log('   2. Add it to your .env file as PUBLIC_OPENAI_API_KEY=your_key');
-      console.log('   3. Restart your development server');
+    if (!this.apiKey) {
+      console.warn('⚠️ OpenAI API key not found. Checking for: PUBLIC_OPENAI_API_KEY, OPENAI_API_KEY, or VITE_OPENAI_API_KEY');
+      console.log('💡 Domain analysis will use fallback mode with simulated data');
+    } else {
+      console.log('✅ OpenAI API key found! AI-powered analysis enabled.');
     }
   }
 
