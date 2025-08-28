@@ -1,0 +1,238 @@
+---
+// Explosive effects component for quirky personality
+---
+
+<div id="fireworks-container" class="fixed inset-0 pointer-events-none z-50 hidden">
+  <canvas id="fireworks-canvas" class="w-full h-full"></canvas>
+</div>
+
+<div id="explosion-overlay" class="fixed inset-0 pointer-events-none z-40 hidden">
+  <div class="absolute inset-0 bg-gradient-to-r from-yellow-400/20 via-orange-500/30 to-red-500/20 animate-pulse"></div>
+</div>
+
+<style>
+  @keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    10%, 30%, 50%, 70%, 90% { transform: translateX(-2px); }
+    20%, 40%, 60%, 80% { transform: translateX(2px); }
+  }
+  
+  @keyframes boom {
+    0% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.1); opacity: 0.8; }
+    100% { transform: scale(1); opacity: 1; }
+  }
+  
+  .shake-effect {
+    animation: shake 0.5s ease-in-out;
+  }
+  
+  .boom-effect {
+    animation: boom 0.3s ease-in-out;
+  }
+  
+  .particle {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    pointer-events: none;
+  }
+</style>
+
+<script>
+  class ExplosiveEffects {
+    constructor() {
+      this.canvas = document.getElementById('fireworks-canvas');
+      this.ctx = this.canvas?.getContext('2d');
+      this.fireworks = [];
+      this.particles = [];
+      this.isAnimating = false;
+      
+      if (this.canvas) {
+        this.resizeCanvas();
+        window.addEventListener('resize', () => this.resizeCanvas());
+      }
+    }
+    
+    resizeCanvas() {
+      if (!this.canvas) return;
+      this.canvas.width = window.innerWidth;
+      this.canvas.height = window.innerHeight;
+    }
+    
+    createFirework(x, y) {
+      const colors = ['#ff6b6b', '#4ecdc4', '#45b7d1', '#96ceb4', '#ffeaa7', '#dda0dd', '#98d8c8'];
+      const particleCount = 30;
+      
+      for (let i = 0; i < particleCount; i++) {
+        this.particles.push({
+          x: x,
+          y: y,
+          vx: (Math.random() - 0.5) * 10,
+          vy: (Math.random() - 0.5) * 10,
+          color: colors[Math.floor(Math.random() * colors.length)],
+          life: 1,
+          decay: Math.random() * 0.02 + 0.01
+        });
+      }
+    }
+    
+    updateParticles() {
+      if (!this.ctx) return;
+      
+      this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+      
+      for (let i = this.particles.length - 1; i >= 0; i--) {
+        const p = this.particles[i];
+        
+        p.x += p.vx;
+        p.y += p.vy;
+        p.vy += 0.1; // gravity
+        p.life -= p.decay;
+        
+        this.ctx.save();
+        this.ctx.globalAlpha = p.life;
+        this.ctx.fillStyle = p.color;
+        this.ctx.beginPath();
+        this.ctx.arc(p.x, p.y, 3, 0, Math.PI * 2);
+        this.ctx.fill();
+        this.ctx.restore();
+        
+        if (p.life <= 0) {
+          this.particles.splice(i, 1);
+        }
+      }
+      
+      if (this.particles.length > 0) {
+        requestAnimationFrame(() => this.updateParticles());
+      } else {
+        this.stopFireworks();
+      }
+    }
+    
+    startFireworks(x, y) {
+      if (this.isAnimating) return;
+      
+      this.isAnimating = true;
+      const container = document.getElementById('fireworks-container');
+      container?.classList.remove('hidden');
+      
+      // Create multiple fireworks
+      this.createFirework(x, y);
+      setTimeout(() => this.createFirework(x + 100, y - 50), 200);
+      setTimeout(() => this.createFirework(x - 100, y - 30), 400);
+      
+      this.updateParticles();
+    }
+    
+    stopFireworks() {
+      this.isAnimating = false;
+      const container = document.getElementById('fireworks-container');
+      setTimeout(() => {
+        container?.classList.add('hidden');
+      }, 1000);
+    }
+    
+    explodeScreen() {
+      // Screen shake
+      document.body.classList.add('shake-effect');
+      setTimeout(() => document.body.classList.remove('shake-effect'), 500);
+      
+      // Flash effect
+      const overlay = document.getElementById('explosion-overlay');
+      overlay?.classList.remove('hidden');
+      setTimeout(() => overlay?.classList.add('hidden'), 300);
+      
+      // Random fireworks across screen
+      for (let i = 0; i < 5; i++) {
+        setTimeout(() => {
+          const x = Math.random() * window.innerWidth;
+          const y = Math.random() * window.innerHeight * 0.7;
+          this.startFireworks(x, y);
+        }, i * 300);
+      }
+    }
+    
+    projectClickEffect(element) {
+      // Card boom effect
+      element.classList.add('boom-effect');
+      setTimeout(() => element.classList.remove('boom-effect'), 300);
+      
+      // Get click position relative to viewport
+      const rect = element.getBoundingClientRect();
+      const x = rect.left + rect.width / 2;
+      const y = rect.top + rect.height / 2;
+      
+      this.startFireworks(x, y);
+      
+      // Add some sparkle particles around the card
+      this.createSparkles(element);
+    }
+    
+    createSparkles(element) {
+      const sparkleCount = 15;
+      const rect = element.getBoundingClientRect();
+      
+      for (let i = 0; i < sparkleCount; i++) {
+        const sparkle = document.createElement('div');
+        sparkle.className = 'particle';
+        sparkle.style.background = `hsl(${Math.random() * 360}, 70%, 60%)`;
+        sparkle.style.left = `${rect.left + Math.random() * rect.width}px`;
+        sparkle.style.top = `${rect.top + Math.random() * rect.height}px`;
+        sparkle.style.animation = `sparkle-float 1s ease-out forwards`;
+        
+        document.body.appendChild(sparkle);
+        
+        setTimeout(() => sparkle.remove(), 1000);
+      }
+    }
+  }
+  
+  // Initialize effects
+  const explosiveEffects = new ExplosiveEffects();
+  
+  // Add click handlers to project cards
+  document.addEventListener('DOMContentLoaded', () => {
+    const projectCards = document.querySelectorAll('.group');
+    projectCards.forEach(card => {
+      card.addEventListener('click', (e) => {
+        e.preventDefault();
+        explosiveEffects.projectClickEffect(card);
+        
+        // Still navigate after effect
+        const link = card.querySelector('a[href]');
+        if (link) {
+          setTimeout(() => {
+            window.open(link.href, '_blank');
+          }, 800);
+        }
+      });
+    });
+    
+    // Add explosion effect to main CTA buttons
+    const ctaButtons = document.querySelectorAll('button');
+    ctaButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        explosiveEffects.explodeScreen();
+      });
+    });
+  });
+  
+  // Add sparkle animation CSS
+  const style = document.createElement('style');
+  style.textContent = `
+    @keyframes sparkle-float {
+      0% {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-100px) scale(0);
+        opacity: 0;
+      }
+    }
+  `;
+  document.head.appendChild(style);
+</script>
+</div>
