@@ -1,3 +1,5 @@
+import { openaiService } from './openaiService.js';
+
 // AI-powered domain analysis engine
 export const domainAnalyzer = {
   // Simulate domain scanning with AI analysis
@@ -25,7 +27,7 @@ export const domainAnalyzer = {
       for (const combo of combinations.slice(0, 3)) {
         for (const ext of extensions.slice(0, 2)) {
           const domain = `${combo}${ext}`;
-          const analysis = this.analyzeDomain(domain, keyword, maxPrice);
+          const analysis = await this.analyzeDomainWithAI(domain, keyword, maxPrice);
           
           if (analysis && analysis.currentPrice <= maxPrice) {
             domains.push(analysis);
@@ -38,6 +40,40 @@ export const domainAnalyzer = {
     return domains
       .sort((a, b) => b.profitScore - a.profitScore)
       .slice(0, 12);
+  },
+  
+  async analyzeDomainWithAI(domainName, keyword, maxPrice) {
+    // Get AI analysis from OpenAI
+    const aiAnalysis = await openaiService.analyzeDomain(domainName, keyword);
+    
+    // Generate realistic current price
+    const currentPrice = Math.floor(Math.random() * maxPrice) + 1;
+    
+    // Use AI predicted value or fallback
+    const predictedValue = aiAnalysis.predictedValue;
+    
+    if (predictedValue <= currentPrice * 2) {
+      return null; // Not profitable enough
+    }
+    
+    const roi = Math.floor(((predictedValue - currentPrice) / currentPrice) * 100);
+    const profitScore = this.calculateProfitScore(roi, aiAnalysis.trendScore, aiAnalysis.seoValue);
+    
+    return {
+      name: domainName,
+      currentPrice,
+      predictedValue,
+      roi,
+      profitScore,
+      confidence: aiAnalysis.confidence,
+      trendScore: aiAnalysis.trendScore,
+      seoValue: aiAnalysis.seoValue,
+      reasons: aiAnalysis.reasons,
+      riskFactors: aiAnalysis.riskFactors,
+      timeToSell: aiAnalysis.timeToSell,
+      marketTrend: aiAnalysis.marketTrend,
+      aiPowered: aiAnalysis.aiPowered
+    };
   },
   
   analyzeDomain(domainName, keyword, maxPrice) {
