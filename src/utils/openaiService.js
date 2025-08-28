@@ -1,7 +1,7 @@
 // OpenAI service for AI-powered domain analysis
 class OpenAIService {
   constructor() {
-    this.apiKey = import.meta.env.OPENAI_API_KEY;
+    this.apiKey = import.meta.env.PUBLIC_OPENAI_API_KEY;
     this.baseURL = 'https://api.openai.com/v1';
   }
 
