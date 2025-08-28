@@ -1,0 +1,78 @@
+---
+import { Sparkles, ArrowDown, Github, Linkedin, Twitter } from 'lucide-react';
+---
+
+<section class="min-h-screen bg-gradient-to-br from-black via-purple-900/20 to-black flex items-center justify-center relative overflow-hidden">
+  <!-- Animated Background -->
+  <div class="absolute inset-0">
+    <div class="absolute top-1/4 left-1/4 w-64 h-64 bg-purple-500/10 rounded-full blur-3xl animate-pulse"></div>
+    <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-pink-500/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
+    <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-128 h-128 bg-blue-500/5 rounded-full blur-3xl animate-pulse delay-2000"></div>
+  </div>
+
+  <!-- Grid Pattern -->
+  <div class="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%23ffffff" fill-opacity="0.02"%3E%3Ccircle cx="30" cy="30" r="1"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')] opacity-20"></div>
+
+  <div class="relative z-10 text-center max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="mb-8">
+      <div class="inline-flex items-center space-x-2 bg-purple-500/10 border border-purple-500/20 rounded-full px-4 py-2 mb-6">
+        <Sparkles className="w-4 h-4 text-purple-400" />
+        <span class="text-purple-300 text-sm">AI-Powered Innovation</span>
+      </div>
+      
+      <h1 class="text-5xl md:text-7xl font-bold mb-6">
+        <span class="bg-gradient-to-r from-white via-purple-200 to-pink-200 bg-clip-text text-transparent">
+          Building the
+        </span>
+        <br>
+        <span class="bg-gradient-to-r from-purple-400 via-pink-400 to-purple-600 bg-clip-text text-transparent">
+          Future with AI
+        </span>
+      </h1>
+      
+      <p class="text-xl md:text-2xl text-gray-300 mb-8 max-w-3xl mx-auto leading-relaxed">
+        Founder, entrepreneur, and AI enthusiast creating revolutionary solutions 
+        that transform industries and empower communities.
+      </p>
+      
+      <div class="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
+        <button class="bg-gradient-to-r from-purple-500 to-pink-500 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:from-purple-600 hover:to-pink-600 transform hover:scale-105 transition-all duration-200 shadow-lg shadow-purple-500/25">
+          Explore My Projects
+        </button>
+        <button class="border border-purple-500/50 text-purple-300 px-8 py-4 rounded-lg text-lg font-semibold hover:bg-purple-500/10 transition-all duration-200">
+          Support My Work
+        </button>
+      </div>
+
+      <!-- Social Links -->
+      <div class="flex justify-center space-x-6 mb-12">
+        <a href="#" class="text-gray-400 hover:text-purple-400 transition-colors duration-200">
+          <Github className="w-6 h-6" />
+        </a>
+        <a href="#" class="text-gray-400 hover:text-purple-400 transition-colors duration-200">
+          <Linkedin className="w-6 h-6" />
+        </a>
+        <a href="#" class="text-gray-400 hover:text-purple-400 transition-colors duration-200">
+          <Twitter className="w-6 h-6" />
+        </a>
+      </div>
+    </div>
+
+    <!-- Scroll Indicator -->
+    <div class="animate-bounce">
+      <ArrowDown className="w-6 h-6 text-purple-400 mx-auto" />
+    </div>
+  </div>
+
+  <!-- Floating Elements -->
+  <div class="absolute top-20 left-10 w-2 h-2 bg-purple-400 rounded-full animate-ping"></div>
+  <div class="absolute top-40 right-20 w-1 h-1 bg-pink-400 rounded-full animate-ping delay-1000"></div>
+  <div class="absolute bottom-40 left-20 w-1.5 h-1.5 bg-blue-400 rounded-full animate-ping delay-2000"></div>
+</section>
+
+<script>
+  // Smooth scroll for buttons
+  document.querySelector('button')?.addEventListener('click', () => {
+    document.querySelector('#projects')?.scrollIntoView({ behavior: 'smooth' });
+  });
+</script>
