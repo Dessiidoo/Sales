@@ -70,8 +70,8 @@ import { Search, Sparkles, DollarSign, TrendingUp } from 'lucide-react';
   const scanBtn = document.getElementById('scan-btn');
   const loading = document.getElementById('loading');
   const results = document.getElementById('results');
-  const searchInput = document.getElementById('domain-search') as HTMLInputElement;
-  const maxPriceInput = document.getElementById('max-price') as HTMLInputElement;
+  const searchInput = document.getElementById('domain-search');
+  const maxPriceInput = document.getElementById('max-price');
 
   scanBtn?.addEventListener('click', async () => {
     const keywords = searchInput.value.trim();
