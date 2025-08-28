@@ -1,0 +1,30 @@
+---
+import { TrendingUp, Zap, Target } from 'lucide-react';
+---
+
+<header class="bg-white border-b border-gray-200 sticky top-0 z-50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between items-center h-16">
+      <div class="flex items-center space-x-3">
+        <div class="flex items-center justify-center w-10 h-10 bg-gradient-to-r from-primary-600 to-purple-600 rounded-lg">
+          <TrendingUp className="w-6 h-6 text-white" />
+        </div>
+        <div>
+          <h1 class="text-xl font-bold text-gray-900">DomainFlip AI</h1>
+          <p class="text-xs text-gray-500">Powered by AI Analytics</p>
+        </div>
+      </div>
+      
+      <nav class="hidden md:flex items-center space-x-8">
+        <a href="#scanner" class="flex items-center space-x-2 text-gray-600 hover:text-primary-600 transition-colors">
+          <Zap className="w-4 h-4" />
+          <span>Scanner</span>
+        </a>
+        <a href="#analytics" class="flex items-center space-x-2 text-gray-600 hover:text-primary-600 transition-colors">
+          <Target className="w-4 h-4" />
+          <span>Analytics</span>
+        </a>
+      </nav>
+    </div>
+  </div>
+</header>

@@ -1,0 +1,130 @@
+---
+import { BarChart3, TrendingUp, DollarSign, Target } from 'lucide-react';
+---
+
+<section id="analytics" class="py-12 bg-gray-50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-12">
+      <div class="flex items-center justify-center mb-4">
+        <BarChart3 className="w-8 h-8 text-primary-600 mr-3" />
+        <h2 class="text-3xl font-bold text-gray-900">Market Analytics</h2>
+      </div>
+      <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+        Real-time insights into domain market trends, pricing patterns, and investment opportunities.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+      <div class="card text-center">
+        <div class="flex items-center justify-center w-12 h-12 bg-success-100 rounded-lg mx-auto mb-4">
+          <DollarSign className="w-6 h-6 text-success-600" />
+        </div>
+        <h3 class="text-2xl font-bold text-gray-900 mb-2">$2.4M</h3>
+        <p class="text-gray-600">Total Profit Identified</p>
+      </div>
+
+      <div class="card text-center">
+        <div class="flex items-center justify-center w-12 h-12 bg-primary-100 rounded-lg mx-auto mb-4">
+          <Target className="w-6 h-6 text-primary-600" />
+        </div>
+        <h3 class="text-2xl font-bold text-gray-900 mb-2">1,247</h3>
+        <p class="text-gray-600">Domains Analyzed</p>
+      </div>
+
+      <div class="card text-center">
+        <div class="flex items-center justify-center w-12 h-12 bg-purple-100 rounded-lg mx-auto mb-4">
+          <TrendingUp className="w-6 h-6 text-purple-600" />
+        </div>
+        <h3 class="text-2xl font-bold text-gray-900 mb-2">87%</h3>
+        <p class="text-gray-600">Prediction Accuracy</p>
+      </div>
+
+      <div class="card text-center">
+        <div class="flex items-center justify-center w-12 h-12 bg-warning-100 rounded-lg mx-auto mb-4">
+          <BarChart3 className="w-6 h-6 text-warning-600" />
+        </div>
+        <h3 class="text-2xl font-bold text-gray-900 mb-2">342%</h3>
+        <p class="text-gray-600">Average ROI</p>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+      <div class="card">
+        <h3 class="text-xl font-semibold text-gray-900 mb-6">Top Trending Keywords</h3>
+        <div class="space-y-4">
+          <div class="flex items-center justify-between">
+            <span class="font-medium text-gray-900">AI</span>
+            <div class="flex items-center space-x-2">
+              <div class="w-24 bg-gray-200 rounded-full h-2">
+                <div class="bg-primary-600 h-2 rounded-full" style="width: 95%"></div>
+              </div>
+              <span class="text-sm text-gray-600">95%</span>
+            </div>
+          </div>
+          <div class="flex items-center justify-between">
+            <span class="font-medium text-gray-900">Crypto</span>
+            <div class="flex items-center space-x-2">
+              <div class="w-24 bg-gray-200 rounded-full h-2">
+                <div class="bg-primary-600 h-2 rounded-full" style="width: 88%"></div>
+              </div>
+              <span class="text-sm text-gray-600">88%</span>
+            </div>
+          </div>
+          <div class="flex items-center justify-between">
+            <span class="font-medium text-gray-900">NFT</span>
+            <div class="flex items-center space-x-2">
+              <div class="w-24 bg-gray-200 rounded-full h-2">
+                <div class="bg-primary-600 h-2 rounded-full" style="width: 76%"></div>
+              </div>
+              <span class="text-sm text-gray-600">76%</span>
+            </div>
+          </div>
+          <div class="flex items-center justify-between">
+            <span class="font-medium text-gray-900">Web3</span>
+            <div class="flex items-center space-x-2">
+              <div class="w-24 bg-gray-200 rounded-full h-2">
+                <div class="bg-primary-600 h-2 rounded-full" style="width: 72%"></div>
+              </div>
+              <span class="text-sm text-gray-600">72%</span>
+            </div>
+          </div>
+          <div class="flex items-center justify-between">
+            <span class="font-medium text-gray-900">Metaverse</span>
+            <div class="flex items-center space-x-2">
+              <div class="w-24 bg-gray-200 rounded-full h-2">
+                <div class="bg-primary-600 h-2 rounded-full" style="width: 68%"></div>
+              </div>
+              <span class="text-sm text-gray-600">68%</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3 class="text-xl font-semibold text-gray-900 mb-6">Recent Success Stories</h3>
+        <div class="space-y-4">
+          <div class="border-l-4 border-success-500 pl-4">
+            <h4 class="font-semibold text-gray-900">aitools.com</h4>
+            <p class="text-sm text-gray-600">Bought for $12 → Sold for $8,500</p>
+            <p class="text-xs text-success-600 font-medium">+70,733% ROI</p>
+          </div>
+          <div class="border-l-4 border-success-500 pl-4">
+            <h4 class="font-semibold text-gray-900">cryptowallet.io</h4>
+            <p class="text-sm text-gray-600">Bought for $45 → Sold for $12,000</p>
+            <p class="text-xs text-success-600 font-medium">+26,567% ROI</p>
+          </div>
+          <div class="border-l-4 border-success-500 pl-4">
+            <h4 class="font-semibold text-gray-900">nftmarket.app</h4>
+            <p class="text-sm text-gray-600">Bought for $28 → Sold for $5,200</p>
+            <p class="text-xs text-success-600 font-medium">+18,457% ROI</p>
+          </div>
+          <div class="border-l-4 border-warning-500 pl-4">
+            <h4 class="font-semibold text-gray-900">web3dev.net</h4>
+            <p class="text-sm text-gray-600">Bought for $35 → Current value: $3,800</p>
+            <p class="text-xs text-warning-600 font-medium">Holding for higher value</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
