@@ -1,8 +1,7 @@
-import React, { useState } from 'react';
-import { Plus, Play, Pause, BarChart3, Users, Mail, Calendar } from 'lucide-react';
+import { useState } from 'react';
+import { Plus } from 'lucide-react';
 import { CampaignCard } from './campaigns/CampaignCard';
 import { CreateCampaignModal } from './campaigns/CreateCampaignModal';
-
 const campaigns = [
   {
     id: 1,
