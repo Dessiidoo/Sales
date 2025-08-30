@@ -1,3 +1,4 @@
+import React from 'react';
 import { useState } from 'react';
 import { Plus } from 'lucide-react';
 import { CampaignCard } from './campaigns/CampaignCard';

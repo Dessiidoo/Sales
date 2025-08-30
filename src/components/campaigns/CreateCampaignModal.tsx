@@ -1,3 +1,4 @@
+import React from 'react';
 import { useState } from 'react';
 import { X, Target, Brain, Calendar } from 'lucide-react';
 interface CreateCampaignModalProps {
