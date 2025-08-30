@@ -1,4 +1,3 @@
-import React from 'react';
 import { Play, Pause, Edit, BarChart3, Users, Mail, Eye, MessageSquare } from 'lucide-react';
 
 interface Campaign {

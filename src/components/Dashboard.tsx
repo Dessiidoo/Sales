@@ -1,4 +1,3 @@
-import React from 'react';
 import { MetricsGrid } from './dashboard/MetricsGrid';
 import { ProspectChart } from './dashboard/ProspectChart';
 import { RecentActivity } from './dashboard/RecentActivity';

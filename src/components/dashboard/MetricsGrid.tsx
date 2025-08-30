@@ -1,4 +1,3 @@
-import React from 'react';
 import { TrendingUp, Target, Users, DollarSign, Brain, Zap } from 'lucide-react';
 
 const metrics = [

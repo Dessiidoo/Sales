@@ -1,4 +1,3 @@
-import React from 'react';
 import { BarChart3, Target, TrendingUp, MessageSquare, Home } from 'lucide-react';
 
 interface SidebarProps {

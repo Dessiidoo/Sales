@@ -1,4 +1,3 @@
-import React from 'react';
 import { ConversionFunnel } from './analytics/ConversionFunnel';
 import { IndustryBreakdown } from './analytics/IndustryBreakdown';
 import { PerformanceMetrics } from './analytics/PerformanceMetrics';

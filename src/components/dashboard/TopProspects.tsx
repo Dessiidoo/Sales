@@ -1,4 +1,3 @@
-import React from 'react';
 import { Building2, TrendingUp, Star } from 'lucide-react';
 
 const prospects = [

@@ -1,4 +1,3 @@
-import React from 'react';
 import { Clock, Brain, Target, MessageSquare, TrendingUp } from 'lucide-react';
 
 const activities = [

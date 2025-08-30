@@ -1,4 +1,3 @@
-import React from 'react';
 import { Brain, TrendingUp, AlertTriangle, Lightbulb, Target } from 'lucide-react';
 
 const insights = [

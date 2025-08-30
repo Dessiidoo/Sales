@@ -1,4 +1,3 @@
-import React from 'react';
 import { Brain, Bell, Settings, User } from 'lucide-react';
 
 export function Header() {
