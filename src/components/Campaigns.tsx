@@ -1,13 +1,13 @@
-import React from 'react';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { Plus } from 'lucide-react';
 import { CampaignCard } from './campaigns/CampaignCard';
 import { CreateCampaignModal } from './campaigns/CreateCampaignModal';
+
 const campaigns = [
   {
     id: 1,
     name: 'Q4 Enterprise Push',
-    status: 'active',
+    status: 'active' as const,
     prospects: 89,
     sent: 67,
     opened: 45,
@@ -19,7 +19,7 @@ const campaigns = [
   {
     id: 2,
     name: 'Fintech Expansion',
-    status: 'paused',
+    status: 'paused' as const,
     prospects: 156,
     sent: 156,
     opened: 98,
@@ -31,7 +31,7 @@ const campaigns = [
   {
     id: 3,
     name: 'Healthcare SaaS Outreach',
-    status: 'draft',
+    status: 'draft' as const,
     prospects: 234,
     sent: 0,
     opened: 0,
