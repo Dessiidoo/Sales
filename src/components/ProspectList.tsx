@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Search, Filter, Download, Star, Building2, Mail, Phone, ExternalLink } from 'lucide-react';
+import { Search, Filter, Download, Star, Building2, Mail, Phone, ExternalLink, MessageSquare } from 'lucide-react';
 
 const prospects = [
   {
