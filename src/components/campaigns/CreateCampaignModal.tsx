@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
-import { X, Brain, Target, Mail, Calendar } from 'lucide-react';
-
+import { useState } from 'react';
+import { X } from 'lucide-react';
 interface CreateCampaignModalProps {
   onClose: () => void;
 }
